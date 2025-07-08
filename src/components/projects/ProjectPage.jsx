@@ -1,5 +1,7 @@
 // src/components/projects/ProjectsPage.jsx
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { db } from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
 import ProjectCard from "./ProjectCard";
 import "./ProjectPage.css";
 import Navbar from "../Navbar";
@@ -51,16 +53,32 @@ const projects = [
 ];
 
 function ProjectsPage() {
+	const [projects, setProjects] = useState([]);
+
+	// Fetch projects
+	useEffect(() => {
+		async function fetchProjects() {
+			const querySnapshot = await getDocs(collection(db, "projects"));
+			const items = [];
+			querySnapshot.forEach((doc) => {
+				items.push({ id: doc.id, ...doc.data() });
+			});
+			setProjects(items);
+		}
+		fetchProjects();
+	}, []);
+
+
 	return (
-		<div className="projects-page">
-            <Navbar/>
-			<h1 className="projects-title">My Projects</h1>
+		<section className="projects-page" id="explore">
+			<Navbar />
+			<h2 className="projects-title">My Projects</h2>
 			<div className="projects-grid">
 				{projects.map((project, idx) => (
 					<ProjectCard key={idx} {...project} />
 				))}
 			</div>
-		</div>
+		</section>
 	);
 }
 

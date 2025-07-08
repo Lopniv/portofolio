@@ -32,9 +32,6 @@ function GalleryPage() {
 	const [photos, setPhotos] = useState([]);
 	const [displayPhotos, setDisplayPhotos] = useState([]);
 
-	const shuffledPhotosRef = useRef([]);
-	const currentIndexRef = useRef(0);
-
 	// Fetch highlights
 	useEffect(() => {
 		async function fetchHighlights() {
@@ -90,7 +87,6 @@ function GalleryPage() {
 					{/* Left: Title and Description */}
 					<div className="gallery-landing-left">
 						<h1 className="gallery-landing-title">
-							{/* Uncover the Story <br /> Behind Every Artwork */}
 							{Array.from(
 								"Uncover the Story Behind Every Artwork"
 							).map((char, i) => (
