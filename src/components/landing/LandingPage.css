@@ -1,0 +1,138 @@
+.landing-root {
+	height: 100vh;
+	position: relative;
+	background: #181818;
+	background-size: cover;
+	background-position: center;
+	transition: background-image 0.5s;
+}
+
+.landing-overlay {
+	height: 100vh;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1;
+	pointer-events: none;
+}
+
+.landing-main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 120px;
+	position: relative;
+	z-index: 2;
+}
+
+.landing-left {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.landing-character {
+	display: block;
+	position: fixed;
+	bottom: -10px;
+	left: -15px;
+	width: 320px;
+	height: 320px;
+	z-index: 2;
+	mix-blend-mode: lighten;
+}
+
+.landing-right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.landing-cards {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 32px;
+}
+
+.landing-card {
+	position: relative;
+	width: 120px;
+	height: 180px;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+	cursor: pointer;
+	background: #333;
+	transition: transform 0.2s, box-shadow 0.2s;
+	will-change: transform, box-shadow;
+}
+
+.landing-card:hover {
+	transform: translateY(-8px) scale(1.05);
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+.landing-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* --- Title Overlay on Hover --- */
+.landing-card-title-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(24, 24, 24, 0.4);
+	opacity: 0;
+	display: flex;
+	align-items: end;
+	justify-content: center;
+	transition: opacity 0.2s;
+	pointer-events: none;
+}
+
+.landing-card:hover .landing-card-title-overlay {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.landing-card-title {
+	color: #fff;
+	font-size: 0.7rem;
+	font-weight: 600;
+	text-align: center;
+	padding: 8px 8px;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 6px 6px 0 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.landing-title {
+	color: #fff;
+	font-size: 28px;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 24px;
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	max-width: 400px;
+	margin: 0 0 15px 0;
+}
+
+.landing-explore-btn {
+	padding: 14px 36px;
+	background: linear-gradient(90deg, #ff7e5f, #feb47b);
+	color: #fff;
+	border: none;
+	border-radius: 24px;
+	font-size: 18px;
+	font-weight: 600;
+	text-decoration: none;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	transition: background 0.2s;
+}
+
+.landing-explore-btn:hover {
+	background: linear-gradient(90deg, #feb47b, #ff7e5f);
+}
