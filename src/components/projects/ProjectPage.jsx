@@ -4,7 +4,7 @@ import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import ProjectCard from "./ProjectCard";
 import "./ProjectPage.css";
-import Navbar from "../Navbar";
+import Navbar from "../share/Navbar";
 
 // Example static data (replace with Firestore if you want)
 const projects = [

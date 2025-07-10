@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.css";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function Navbar() {
 	return (
@@ -18,6 +19,7 @@ function Navbar() {
 				<a href="about" className="link">
 					About
 				</a>
+				<LanguageSwitcher />
 			</div>
 		</nav>
 	);

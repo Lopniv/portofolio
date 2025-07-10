@@ -1,0 +1,127 @@
+.about-root {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff2e3;
+	color: #fff;
+	gap: 60px;
+}
+
+.about-left {
+    padding-left: 30px;
+    flex: 1.5 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.about-title {
+	font-size: 2.4rem;
+	font-weight: 800;
+	margin-bottom: 18px;
+    color: black;
+}
+
+.about-desc {
+	font-size: 1.15rem;
+	color: black;
+	margin: 0px;
+}
+
+.about-tech h3 {
+	font-size: 1.2rem;
+	font-weight: 700;
+	margin-bottom: 12px;
+	color: #ff7e5f;
+}
+
+.about-tech-icons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 10px;
+}
+
+.about-tech-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.8rem;
+	color: #fff;
+	background: #23272f;
+	padding: 8px 16px;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.about-tech-icon {
+	font-size: 1rem;
+	color: #ff7e5f;
+}
+
+.about-right {
+    padding-top: 30px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.about-photo-container {
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+	margin-bottom: 18px;
+}
+
+.about-photo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.about-socials {
+	display: flex;
+	gap: 18px;
+	margin-bottom: 12px;
+}
+
+.about-social-link {
+	font-size: 2rem;
+	color: #fff;
+	background: #23272f;
+	border-radius: 50%;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.about-social-link:hover {
+	background: #ff7e5f;
+	color: #fff;
+	transform: scale(1.1);
+}
+
+.about-contact-btn {
+	margin-top: 8px;
+	padding: 10px 28px;
+	background: linear-gradient(90deg, #ff7e5f, #feb47b);
+	color: #23272f;
+	font-weight: 700;
+	border-radius: 24px;
+	text-decoration: none;
+	font-size: 1.1rem;
+	transition: background 0.2s, color 0.2s;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.about-contact-btn:hover {
+	background: linear-gradient(90deg, #feb47b, #ff7e5f);
+	color: #fff;
+}

@@ -1,17 +1,17 @@
 /* src/components/projects/ProjectCard.css */
 .project-card {
-    min-width: 280px;
-    max-width: 280px;
-    height: 350px;
-    background: #23272f;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.18s, box-shadow 0.18s;
-    cursor: pointer;
-    position: relative;
+	min-width: 280px;
+	max-width: 280px;
+	height: 350px;
+	background: #23272f;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.18s, box-shadow 0.18s;
+	cursor: pointer;
+	position: relative;
 }
 
 .project-card:hover {
@@ -20,11 +20,11 @@
 }
 
 .project-card-img {
-    width: 100%;
-    max-height: 180px;
-    min-height: 180px;
-    object-fit: cover;
-    background: #181818;
+	width: 100%;
+	max-height: 180px;
+	min-height: 180px;
+	object-fit: cover;
+	background: #181818;
 }
 
 .project-card-content {
@@ -39,42 +39,47 @@
 	font-size: 1.4rem;
 	font-weight: 700;
 	margin-bottom: 0px;
-    margin-top: 0px;
+	margin-top: 0px;
 }
 
 .project-card-desc {
-    font-size: 1rem;
-    color: #cfd8dc;
-    flex: 1 1;
-    margin-top: 6px;
-    margin-bottom: 18px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+	font-size: 1rem;
+	color: #cfd8dc;
+	flex: 1 1;
+	margin-top: 6px;
+	margin-bottom: 18px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
 .project-card-desc:hover {
 	display: block;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
-.project-card-link {
-	align-self: flex-start;
+.project-card-play {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
 	background: linear-gradient(90deg, #ff7e5f, #feb47b);
 	color: #23272f;
-	font-weight: 600;
-	padding: 8px 18px;
-	border-radius: 8px;
+	font-size: 1rem;
 	text-decoration: none;
-	transition: background 0.2s, color 0.2s;
+	transition: background 0.2s, color 0.2s, transform 0.18s;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.project-card-link:hover {
+.project-card-play:hover {
 	background: linear-gradient(90deg, #feb47b, #ff7e5f);
 	color: #fff;
+	transform: scale(1.1);
 }

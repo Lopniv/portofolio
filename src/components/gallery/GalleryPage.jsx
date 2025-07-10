@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "./GalleryPage.css";
-import Navbar from "../Navbar";
+import Navbar from "../share/Navbar";
 
 // --- Dummy Data (replace with your actual images) ---
 const globeBg = "/images/image-world.png";

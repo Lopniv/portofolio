@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "./LandingPage.css";
-import Navbar from "../Navbar";
+import Navbar from "../share/Navbar";
 
 const gifSrc = "/images/character.gif"; // Replace with your gif path
 
 function LandingPage() {
-	const [bgImage, setBgImage] = useState(
-		"https://res.cloudinary.com/djuzjcbjz/image/upload/v1751850205/image-3_2_kat4ns.jpg"
-	);
+	const [bgImage, setBgImage] = useState("");
 	const [highlights, setHighlights] = useState([]);
 
 	useEffect(() => {
@@ -20,6 +18,7 @@ function LandingPage() {
 				items.push({ id: doc.id, ...doc.data() });
 			});
 			setHighlights(items);
+			setBgImage(items.length > 0 ? items[0].url : "");
 		}
 		fetchHighlights();
 	}, []);
