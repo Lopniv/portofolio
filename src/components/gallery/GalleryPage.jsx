@@ -3,6 +3,8 @@ import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "./GalleryPage.css";
 import Navbar from "../share/Navbar";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 // --- Dummy Data (replace with your actual images) ---
 const globeBg = "/images/image-world.png";
@@ -25,12 +27,23 @@ function getRandomPhotos(photos, count) {
 
 // --- Main Component ---
 function GalleryPage() {
+	const MIN_CARDS = 6;
+
+	const { t } = useTranslation();
+
 	const [viewerOpen, setViewerOpen] = useState(false);
 	const [currentPhoto, setCurrentPhoto] = useState(null);
 
 	const [highlights, setHighlights] = useState([]);
 	const [photos, setPhotos] = useState([]);
 	const [displayPhotos, setDisplayPhotos] = useState([]);
+
+	const [stories, setStories] = useState([]);
+
+	const { i18n } = useTranslation();
+	const [lang, setLang] = useState(i18n.language);
+
+	const navigate = useNavigate();
 
 	// Fetch highlights
 	useEffect(() => {
@@ -44,6 +57,28 @@ function GalleryPage() {
 		}
 		fetchHighlights();
 	}, []);
+
+	// Fetch stories
+	useEffect(() => {
+		async function fetchStories() {
+			const querySnapshot = await getDocs(collection(db, "stories highlight"));
+			const items = [];
+			querySnapshot.forEach((doc) => {
+				items.push({ id: doc.id, ...doc.data() });
+			});
+			setStories(items);
+		}
+		fetchStories();
+	}, []);
+
+	useEffect(() => {
+		setLang(i18n.language);
+	}, [i18n.language]);
+
+	const cards = [
+		...stories,
+		...Array(Math.max(0, MIN_CARDS - stories.length)).fill({ comingSoon: true })
+	];
 
 	// Fetch photos
 	useEffect(() => {
@@ -75,7 +110,7 @@ function GalleryPage() {
 
 	return (
 		<div className="gallery-root">
-			<Navbar/>
+			<Navbar />
 			{/* --- Section 1: Gallery Landing --- */}
 			<section
 				className="gallery-landing-section gallery-section"
@@ -88,7 +123,7 @@ function GalleryPage() {
 					<div className="gallery-landing-left">
 						<h1 className="gallery-landing-title">
 							{Array.from(
-								"Uncover the Story Behind Every Artwork"
+								t("galleryTitle")
 							).map((char, i) => (
 								<span className="shine-letter" key={i}>
 									{char}
@@ -96,11 +131,7 @@ function GalleryPage() {
 							))}
 						</h1>
 						<p className="gallery-landing-desc">
-							Behind every stroke, color, and composition lies a
-							story. Whether it’s a moment of joy, sorrow, hope,
-							or imagination drawn from the deepest parts of the
-							soul — every piece on Lopniv reflects something
-							real, something personal.
+							{t("galleryDescription")}
 						</p>
 					</div>
 					{/* Right: 3 Images */}
@@ -135,26 +166,32 @@ function GalleryPage() {
 
 			{/* --- Section 2: Explore the Story --- */}
 			<section className="gallery-section" id="explore">
-				<h2 className="gallery-section-title">Explore the Story</h2>
+				<h2 className="gallery-section-title">{t("galleryExplore")}</h2>
 				<div className="story-scroll">
-					{stories.map((story) => (
-						<div className="story-card" key={story.id}>
-							<img src={story.img} alt={story.title} />
-							<div className="story-title">{story.title}</div>
-						</div>
-					))}
+					{cards.map((story, idx) =>
+						story.comingSoon ? (
+							<div className="story-card coming-soon" key={`coming-soon-${idx}`}>
+								<span>{t("comingSoon") + "..."}</span>
+							</div>
+						) : (
+							<div className="story-card" onClick={() => navigate(`/story/${story.id}`)}
+								style={{ cursor: "pointer" }}>
+								<img src={story.image} alt={story.title[lang]} />
+								<div className="story-title">{story.title[lang]}</div>
+							</div>
+						)
+					)}
 				</div>
 			</section>
 
 			{/* --- Section 3: Photos --- */}
 			<section className="gallery-section" id="photos">
-				<h2 className="gallery-section-title">Photos</h2>
+				<h2 className="gallery-section-title">{t("galleryPhotos")}</h2>
 				<div className="photos-collage">
 					{displayPhotos.map((photo, idx) => (
 						<div
-							className={`photo-collage-item photo-collage-item-${
-								idx + 1
-							}`}
+							className={`photo-collage-item photo-collage-item-${idx + 1
+								}`}
 							key={photo.id}
 							onClick={() => {
 								setCurrentPhoto(photo.url);

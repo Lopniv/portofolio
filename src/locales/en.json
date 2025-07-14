@@ -2,5 +2,22 @@
 	"greeting": "I'm Fahmi - Frontend Developer",
 	"description": "Android Developer with 2 years of experience, complemented by 1 year in web development. Passionate about learning new technologies, with a focus on expanding skills into backend development. Experienced in collaborating with cross-functional teams to deliver high-quality applications, with a strong commitment to enhancing user experience and app performance.",
 	"techSkills": "Tech Skills",
-	"getInTouch": "Get In Touch"
+	"getInTouch": "Get In Touch",
+	"landingTitle": "Enter Lopniv — Where Creativity Inspires, and Art Speaks to the Heart",
+	"landingButton": "Start Explore the Gallery",
+	"galleryTitle": "Uncover the Story Behind Every Artwork",
+	"galleryDescription": "Behind every stroke, color, and composition lies a story. Whether it’s a moment of joy, sorrow, hope, or imagination drawn from the deepest parts of the soul — every piece on Lopniv reflects something real, something personal.",
+	"galleryExplore": "Explore the Story",
+	"comingSoon": "Coming Soon",
+	"galleryPhotos": "Photos",
+	"myProjects": "My Projects",
+	"home": "Home",
+	"gallery": "Gallery",
+	"project": "Projects",
+	"about": "About",
+	"message1": "Welcome to Lopniv!",
+	"message2": "Explore my creative world",
+	"message3": "Check out my latest projects!",
+	"message4": "Art speaks where words are unable to explain",
+	"message5": "Let’s create something amazing together!"
 }

@@ -4,6 +4,7 @@ import LandingPage from "./components/landing/LandingPage";
 import GalleryPage from "./components/gallery/GalleryPage";
 import ProjectsPage from "./components/projects/ProjectPage";
 import AboutPage from "./components/about/AboutPage";
+import DetailStoryPage from "./components/detailStory/DetailStoryPage";
 import "./i18n";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 				<Route path="/gallery" element={<GalleryPage />} />
 				<Route path="/project" element={<ProjectsPage />} />
 				<Route path="/about" element={<AboutPage />} />
+				<Route path="/story/:id" element={<DetailStoryPage />} />
 			</Routes>
 		</Router>
 	);

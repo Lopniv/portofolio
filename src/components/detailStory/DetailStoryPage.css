@@ -1,0 +1,145 @@
+.detail-story-root {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    background: #fff2e3;
+}
+
+.video-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.story-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 20vh;
+    background: linear-gradient(to bottom, rgba(24, 26, 32, 0) 0%, #fff2e3 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.section {
+    scroll-snap-align: start;
+}
+
+.stories-section {
+    background: #fff2e3;
+    min-height: 100vh;
+}
+
+.story-row {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    margin: 0;
+}
+
+.story-row.text-left .story-content {
+    order: 1;
+}
+
+.story-row.text-left .story-divider {
+    order: 2;
+}
+
+.story-row.text-left .story-image-container {
+    order: 3;
+}
+
+.story-row.text-right .story-image-container {
+    order: 1;
+}
+
+.story-row.text-right .story-divider {
+    order: 2;
+}
+
+.story-row.text-right .story-content {
+    order: 3;
+}
+
+.story-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 30px;
+    margin: 0px;
+    background: none;
+}
+
+.story-content h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.story-content p {
+    font-size: 1.1rem;
+    color: black;
+}
+
+.story-divider {
+    width: 2px;
+    background: linear-gradient(to bottom, #ff7e5f 0%, #feb47b 100%);
+    margin: 0 32px;
+    border-radius: 2px;
+}
+
+.story-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 30px;
+}
+
+.story-image {
+    width: 80%;
+    max-width: 100%;
+    max-height: 60%;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
+    object-fit: cover;
+}
+
+.detail-story-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.image-not-found {
+    width: 40%;
+    height: auto;
+    margin-top: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sweet-loading
+{
+    z-index: 1000;
+    position: fixed;
+    place-self: anchor-center;
+}

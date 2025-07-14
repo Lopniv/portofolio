@@ -4,7 +4,7 @@ import Navbar from "../share/Navbar";
 import { useTranslation } from "react-i18next";
 
 // Replace with your actual image and social links
-const profilePhoto = "/images/fahmi.jpg";
+const profilePhoto = "/images/profile.png";
 const socials = [
 	{
 		name: "GitHub",
@@ -32,7 +32,7 @@ const techSkills = [
 	{ name: "Android Studio", icon: "fa-android" },
 	{ name: "Kotlin", icon: "fa-k" },
 	{ name: "Java", icon: "fa-java" },
-	{ name: "VS Code", icon: "fa-code" },
+	{ name: "VS Code", awesomeIcon: "fa-code" },
 	{ name: "Angular", icon: "fa-angular" },
 	{ name: "React", icon: "fa-react" },
 ];
@@ -51,9 +51,14 @@ function AboutPage() {
 					<div className="about-tech-icons">
 						{techSkills.map((skill, idx) => (
 							<div className="about-tech-item" key={idx}>
-								<i
-									className={`fab ${skill.icon} about-tech-icon`}
-								/>
+								{skill.icon && (
+									<i
+										className={`fab ${skill.icon} about-tech-icon`}
+									/>
+								)}
+								{skill.awesomeIcon && (
+									<i class={`fa-solid ${skill.awesomeIcon} about-tech-icon`}></i>
+								)}
 								<span>{skill.name}</span>
 							</div>
 						))}

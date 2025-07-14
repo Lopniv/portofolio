@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./BubblePopup.css";
 
-function BubblePopupText({ text, maxLength = 40 }) {
+function BubblePopupText({ text, maxLength = 30 }) {
 	const [showPopup, setShowPopup] = useState(false);
 
 	const isLong = text.length > maxLength;

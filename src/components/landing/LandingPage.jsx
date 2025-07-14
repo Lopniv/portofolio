@@ -3,12 +3,21 @@ import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "./LandingPage.css";
 import Navbar from "../share/Navbar";
-
-const gifSrc = "/images/character.gif"; // Replace with your gif path
+import { useTranslation } from "react-i18next";
 
 function LandingPage() {
+	const { t } = useTranslation();
+
 	const [bgImage, setBgImage] = useState("");
 	const [highlights, setHighlights] = useState([]);
+
+	const bubbleMessages = [
+		t("message1") || "Welcome to Lopniv!",
+		t("message2") || "Explore my creative world.",
+		t("message3") || "Check out my latest projects!",
+		t("message4") || "Art speaks where words are unable to explain.",
+		t("message5") || "Let’s create something amazing together!",
+	];
 
 	useEffect(() => {
 		async function fetchHighlights() {
@@ -23,23 +32,51 @@ function LandingPage() {
 		fetchHighlights();
 	}, []);
 
+	const [show, setShow] = useState(true);
+	const [msgIndex, setMsgIndex] = useState(0);
+
+	useEffect(() => {
+		// Show bubble for 2.5s, hide for 1.5s, then repeat with next message
+		const showDuration = 2500;
+		const hideDuration = 1500;
+
+		let timeout;
+		if (show) {
+			timeout = setTimeout(() => setShow(false), showDuration);
+		} else {
+			timeout = setTimeout(() => {
+				setShow(true);
+				setMsgIndex((prev) => (prev + 1) % bubbleMessages.length);
+			}, hideDuration);
+		}
+		return () => clearTimeout(timeout);
+	}, [show]);
+
 	return (
 		<div
 			className="landing-root"
 			style={{
 				backgroundImage: bgImage ? `url(${bgImage})` : "none",
 			}}>
-			<video
-				className="landing-character"
-				src="/images/character.mp4"
-				autoPlay
-				loop
-				muted
-				playsInline
-				style={{ width: 320, height: 320, borderRadius: 24 }}
-			/>
+			<div className="landing-bubble-container">
+				{/* Bubble */}
+				<div className={`bubble-pop ${show ? "show" : ""}`}>
+					{bubbleMessages[msgIndex]}
+					<span className="bubble-arrow" />
+				</div>
+				{/* GIF Character */}
+				<video
+					className="landing-character"
+					src="/images/character.mp4"
+					autoPlay
+					loop
+					muted
+					playsInline
+					style={{ width: 320, height: 320, borderRadius: 24 }}
+				/>
+			</div>
 			{bgImage && <div className="landing-overlay" />}
-			<Navbar/>
+			<Navbar />
 			<div className="landing-main">
 				<div className="landing-left"></div>
 				<div className="landing-right">
@@ -59,11 +96,10 @@ function LandingPage() {
 						))}
 					</div>
 					<h1 className="landing-title">
-						Enter Lopniv — Where Creativity Inspires, and Art Speaks
-						to the Heart
+						{t("landingTitle")}
 					</h1>
 					<a href="gallery" className="landing-explore-btn">
-						Start Explore the Gallery
+						{t("landingButton")}
 					</a>
 				</div>
 			</div>

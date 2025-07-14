@@ -31,7 +31,74 @@
 	justify-content: center;
 }
 
+.landing-bubble-container {
+	display: block;
+	position: fixed;
+	bottom: -20px;
+	left: -15px;
+	mix-blend-mode: lighten;
+	z-index: 3;
+}
+
+.bubble-pop {
+	position: absolute;
+	top: -20px;
+	left: 80%;
+	transform: translateX(-50%);
+	background: #ffffff;
+	color: #000000;
+	padding: 16px 24px;
+	border-radius: 22px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+	font-size: 1.1rem;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.4s;
+	z-index: 2;
+	white-space: pre-line;
+	min-width: 180px;
+	max-width: 320px;
+	text-align: center;
+	animation: none;
+}
+
+.bubble-pop.show {
+	opacity: 1;
+	pointer-events: auto;
+	animation: bubbleIn 0.3s;
+}
+
+@keyframes bubbleIn {
+	from {
+		transform: translateX(-50%) scale(0.95);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(-50%) scale(1);
+		opacity: 1;
+	}
+}
+
+.bubble-arrow {
+	position: absolute;
+	bottom: -14px;
+	left: 20%;
+	transform: translateX(-50%);
+	width: 22px;
+	height: 14px;
+	background: white;
+	clip-path: polygon(50% 100%, 0 0, 100% 0);
+	z-index: 3;
+}
+
 .landing-character {
+	width: 320px;
+	height: auto;
+	margin-top: 60px;
+}
+
+/* .landing-character {
 	display: block;
 	position: fixed;
 	bottom: -10px;
@@ -40,7 +107,7 @@
 	height: 320px;
 	z-index: 2;
 	mix-blend-mode: lighten;
-}
+} */
 
 .landing-right {
 	flex: 1;

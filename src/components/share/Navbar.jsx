@@ -1,23 +1,26 @@
 import React from "react";
 import "./Navbar.css";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
+	const { t } = useTranslation();
+
 	return (
 		<nav className="navbar">
 			<div className="logo">Lopniv</div>
 			<div className="links">
 				<a href="/" className="link">
-					Home
+					{t("home")}
 				</a>
-				<a href="gallery" className="link">
-					Gallery
+				<a href="/gallery" className="link">
+					{t("gallery")}
 				</a>
-				<a href="project" className="link">
-					Project
+				<a href="/project" className="link">
+					{t("project")}
 				</a>
-				<a href="about" className="link">
-					About
+				<a href="/about" className="link">
+					{t("about")}
 				</a>
 				<LanguageSwitcher />
 			</div>
