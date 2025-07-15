@@ -32,6 +32,14 @@ function GalleryPage() {
 	const { i18n } = useTranslation();
 	const [lang, setLang] = useState(i18n.language);
 
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+	useEffect(() => {
+		const handleResize = () => setIsMobile(window.innerWidth <= 768);
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
 	const navigate = useNavigate();
 
 	// Fetch highlights
@@ -111,13 +119,15 @@ function GalleryPage() {
 					{/* Left: Title and Description */}
 					<div className="gallery-landing-left">
 						<h1 className="gallery-landing-title">
-							{Array.from(
+							{isMobile ? (
 								t("galleryTitle")
-							).map((char, i) => (
-								<span className="shine-letter" key={i}>
-									{char}
-								</span>
-							))}
+							) : (
+								Array.from(t("galleryTitle")).map((char, i) => (
+									<span className="shine-letter" key={i}>
+										{char}
+									</span>
+								))
+							)}
 						</h1>
 						<p className="gallery-landing-desc">
 							{t("galleryDescription")}

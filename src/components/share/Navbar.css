@@ -1,7 +1,7 @@
 .navbar {
 	position: fixed;
 	top: 0;
-	width: 100%;
+	width: 100vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -13,10 +13,6 @@
 .logo {
 	height: 40px;
 	padding: 16px 30px;
-	color: #fff;
-	font-weight: bold;
-	font-size: 24px;
-	letter-spacing: 2px;
 }
 
 .links {
@@ -60,4 +56,58 @@
 .lang-switcher button:hover {
 	background: #ff7e5f;
 	color: #23272f;
+}
+
+
+.hamburger {
+	display: none;
+	flex-direction: column;
+	gap: 4px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 12px;
+}
+
+.hamburger span {
+	display: block;
+	width: 28px;
+	height: 3px;
+	background: #fff;
+	border-radius: 2px;
+	transition: all 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+	.links {
+		position: absolute;
+		top: 70px;
+		right: -100vw;
+		flex-direction: column;
+		background: #23272f;
+		width: 100vw;
+		padding: 32px 0;
+		gap: 32px;
+		align-items: center;
+		transition: right 0.3s;
+		z-index: 9;
+		margin: 0%;
+	}
+
+	.links.open {
+		right: 0px;
+	}
+
+	.hamburger {
+		display: flex;
+	}
+
+	.lang-switcher {
+		margin-left: 0px;
+	}
+
+	.lang-switcher button {
+		padding: 5px 10px;
+	}
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef } from "react";
 import "./DetailStoryPage.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -14,8 +14,16 @@ function DetailStoryPage() {
     const [showStory, setShowStory] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    const storyRef = useRef(null);
+
+    const { t } = useTranslation();
+
     const { i18n } = useTranslation();
     const lang = i18n.language;
+
+    const handleScrollToStory = () => {
+        storyRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
 
     useEffect(() => {
         async function fetchStory() {
@@ -35,12 +43,16 @@ function DetailStoryPage() {
 
     return (
         <div>
-           
             {showStory && (
                 <div className="detail-story-root">
                     <Navbar />
                     {/* Video Section */}
                     <div className="video-section section">
+                        <div className="explore-button-container">
+                            <button onClick={handleScrollToStory} className="explore-botton">
+                                {t("exploreButton")}
+                            </button>
+                        </div>
                         <iframe
                             className="story-video"
                             src={story.videolink}
@@ -48,13 +60,13 @@ function DetailStoryPage() {
                             frameBorder="0"
                             allow="autoplay; encrypted-media"
                             allowFullScreen
-                            style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
+                            style={{ width: "100vw", height: "95vh", objectFit: "cover" }}
                         />
                         <div className="video-overlay" />
                     </div>
 
                     {/* Stories Section */}
-                    <div className="stories-section">
+                    <div ref={storyRef} className="stories-section">
                         {story.stories.map((item, idx) => (
                             <div
                                 className={`section story-row ${idx % 2 === 0 ? "text-left" : "text-right"}`}
@@ -89,7 +101,7 @@ function DetailStoryPage() {
                 </div>
             )}
             {loading && (
-                <Loading state={loading}/>
+                <Loading state={loading} />
             )}
             {!showStory && !loading && (
                 <div className="detail-story-root">
