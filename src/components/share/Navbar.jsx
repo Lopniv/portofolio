@@ -8,7 +8,7 @@ function Navbar() {
 
 	return (
 		<nav className="navbar">
-			<div className="logo">Lopniv</div>
+			<img className="logo" src="/images/logo.png"/>
 			<div className="links">
 				<a href="/" className="link">
 					{t("home")}

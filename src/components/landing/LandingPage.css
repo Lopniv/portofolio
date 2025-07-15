@@ -20,7 +20,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding-top: 120px;
+	height: 100%;
 	position: relative;
 	z-index: 2;
 }
@@ -97,17 +97,6 @@
 	height: auto;
 	margin-top: 60px;
 }
-
-/* .landing-character {
-	display: block;
-	position: fixed;
-	bottom: -10px;
-	left: -15px;
-	width: 320px;
-	height: 320px;
-	z-index: 2;
-	mix-blend-mode: lighten;
-} */
 
 .landing-right {
 	flex: 1;

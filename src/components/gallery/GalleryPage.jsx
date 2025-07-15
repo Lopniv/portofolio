@@ -6,18 +6,7 @@ import Navbar from "../share/Navbar";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-// --- Dummy Data (replace with your actual images) ---
 const globeBg = "/images/image-world.png";
-
-const stories = [
-	{ id: 1, title: "Story 1", img: "/images/story1.jpg" },
-	{ id: 2, title: "Story 2", img: "/images/story2.jpg" },
-	{ id: 3, title: "Story 3", img: "/images/story3.jpg" },
-	{ id: 4, title: "Story 4", img: "/images/story4.jpg" },
-	{ id: 5, title: "Story 5", img: "/images/story5.jpg" },
-	{ id: 6, title: "Story 6", img: "/images/story6.jpg" },
-	{ id: 7, title: "Story 7", img: "/images/story7.jpg" },
-];
 
 function getRandomPhotos(photos, count) {
 	if (photos.length <= count) return photos;
@@ -27,7 +16,7 @@ function getRandomPhotos(photos, count) {
 
 // --- Main Component ---
 function GalleryPage() {
-	const MIN_CARDS = 6;
+	const MIN_CARDS = 8;
 
 	const { t } = useTranslation();
 
