@@ -106,7 +106,7 @@ function DetailStoryPage() {
             {!showStory && !loading && (
                 <div className="detail-story-root">
                     <div className="detail-story-not-found">
-                        <img className="image-not-found" src="/images/404-error.svg" />
+                        <img className="image-not-found" src="/images/404-Error.svg" />
                     </div>
                 </div>
             )}
