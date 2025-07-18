@@ -33,6 +33,7 @@ function DetailStoryPage() {
                 setStory({ id: docSnap.id, ...docSnap.data() });
                 setShowStory(true);
                 setLoading(false);
+                console.log("Story fetched successfully:", docSnap.data());
             }
             else {
                 setLoading(false);
@@ -48,11 +49,13 @@ function DetailStoryPage() {
                     <Navbar />
                     {/* Video Section */}
                     <div className="video-section section">
-                        <div className="explore-button-container">
-                            <button onClick={handleScrollToStory} className="explore-botton">
-                                {t("exploreButton")}
-                            </button>
-                        </div>
+                        {story.stories && story.stories.length > 0 && (
+                            <div className="explore-button-container">
+                                <button onClick={handleScrollToStory} className="explore-botton">
+                                    {t("exploreButton")}
+                                </button>
+                            </div>
+                        )}
                         <iframe
                             className="story-video"
                             src={story.videolink}
@@ -66,38 +69,41 @@ function DetailStoryPage() {
                     </div>
 
                     {/* Stories Section */}
-                    <div ref={storyRef} className="stories-section">
-                        {story.stories.map((item, idx) => (
-                            <div
-                                className={`section story-row ${idx % 2 === 0 ? "text-left" : "text-right"}`}
-                                key={idx}
-                            >
-                                {idx % 2 === 0 ? (
-                                    <>
-                                        <div className="story-content">
-                                            <h2>{item.title[lang]}</h2>
-                                            <p>{item.description[lang]}</p>
-                                        </div>
-                                        <div className="story-divider" />
-                                        <div className="story-image-container">
-                                            <img src={item.image} alt={item.title[lang]} className="story-image" />
-                                        </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="story-image-container">
-                                            <img src={item.image} alt={item.title[lang]} className="story-image" />
-                                        </div>
-                                        <div className="story-divider" />
-                                        <div className="story-content">
-                                            <h2>{item.title[lang]}</h2>
-                                            <p>{item.description[lang]}</p>
-                                        </div>
-                                    </>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                    {story.stories && story.stories.length > 0 && (
+                        <div ref={storyRef} className="stories-section">
+                            {story.stories.map((item, idx) => (
+                                <div
+                                    className={`section story-row ${idx % 2 === 0 ? "text-left" : "text-right"}`}
+                                    key={idx}
+                                >
+                                    {idx % 2 === 0 ? (
+                                        <>
+                                            <div className="story-content">
+                                                <h2>{item.title[lang]}</h2>
+                                                <p>{item.description[lang]}</p>
+                                            </div>
+                                            <div className="story-divider" />
+                                            <div className="story-image-container">
+                                                <img src={item.image} alt={item.title[lang]} className="story-image" />
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="story-image-container">
+                                                <img src={item.image} alt={item.title[lang]} className="story-image" />
+                                            </div>
+                                            <div className="story-divider" />
+                                            <div className="story-content">
+                                                <h2>{item.title[lang]}</h2>
+                                                <p>{item.description[lang]}</p>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    )
+                    }
                 </div>
             )}
             {loading && (
