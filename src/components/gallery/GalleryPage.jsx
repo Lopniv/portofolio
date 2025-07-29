@@ -167,18 +167,21 @@ function GalleryPage() {
 			<section className="gallery-section" id="explore">
 				<h2 className="gallery-section-title">{t("galleryExplore")}</h2>
 				<div className="story-scroll">
-					{cards.map((story, idx) =>
-						story.comingSoon ? (
-							<div className="story-card coming-soon" key={`coming-soon-${idx}`}>
-								<span>{t("comingSoon") + "..."}</span>
-							</div>
-						) : (
-							<div className="story-card" onClick={() => navigate(`/story/${story.id}`)}
-								style={{ cursor: "pointer" }}>
-								<img src={story.image} alt={story.title[lang]} />
-								<div className="story-title">{story.title[lang]}</div>
-							</div>
-						)
+					{cards
+						.slice()
+						.sort((a, b) => (a.id - b.id))
+						.map((story, idx) =>
+							story.comingSoon ? (
+								<div className="story-card coming-soon" key={`coming-soon-${idx}`}>
+									<span>{t("comingSoon") + "..."}</span>
+								</div>
+							) : (
+								<div className="story-card" onClick={() => navigate(`/story/${story.id}`)}
+									style={{ cursor: "pointer" }}>
+									<img src={story.image} alt={story.title[lang]} />
+									<div className="story-title">{story.title[lang]}</div>
+								</div>
+							)
 					)}
 				</div>
 			</section>
