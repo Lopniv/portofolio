@@ -61,7 +61,7 @@ function PrivacyPolicyPage() {
             <h2 className="subheading">9. Contact Us</h2>
             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
             <p>
-                <strong>Email:</strong> <a href="mailto:abdullahfahmi2406@gmail.com" className="link">abdullahfahmi2406@gmail.com</a><br />
+                <strong>Email:</strong> <a href="mailto:abdullahfahmi2406@gmail.com" className="linkEmail">abdullahfahmi2406@gmail.com</a><br />
                 <strong>Address:</strong> Tokyo - Japan
             </p>
 
