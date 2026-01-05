@@ -1,0 +1,38 @@
+.privacypolicy-page
+{
+    height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	scroll-snap-align: start;
+	background: #fff2e3;
+	position: relative;
+    padding: 50px;
+}
+
+.heading
+{
+    color: #ff6f00;
+    margin-top: 1.5em;
+}
+
+.subheading 
+{
+    color: #ff6f00;
+    margin-top: 1.5em;
+}
+
+.linkEmail
+{
+    color: #ffab40;
+    text-decoration: none;
+}
+
+.footer 
+{
+    text-align: center;
+    margin-top: 40;
+    font-size: 0.9em;
+    color: #888;
+}

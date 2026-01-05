@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import "./GalleryPage.css";

@@ -5,6 +5,7 @@ import GalleryPage from "./components/gallery/GalleryPage";
 import ProjectsPage from "./components/projects/ProjectPage";
 import AboutPage from "./components/about/AboutPage";
 import DetailStoryPage from "./components/detailStory/DetailStoryPage";
+import PrivacyPolicyPage from "./components/privacypolicy/PrivacyPolicyPage";
 import "./i18n";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 				<Route path="/project" element={<ProjectsPage />} />
 				<Route path="/about" element={<AboutPage />} />
 				<Route path="/story/:id" element={<DetailStoryPage />} />
+				<Route path="/privacypolicyghostdefence" element={<PrivacyPolicyPage />} />
 			</Routes>
 		</Router>
 	);
