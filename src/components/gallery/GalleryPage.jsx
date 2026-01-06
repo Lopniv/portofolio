@@ -169,7 +169,12 @@ function GalleryPage() {
 				<div className="story-scroll">
 					{cards
 						.slice()
-						.sort((a, b) => (a.id - b.id))
+						.sort((a, b) => {
+							const pa = a.priority ?? 0;
+							const pb = b.priority ?? 0;
+							if (pb !== pa) return pb - pa;
+							return a.id - b.id;
+						  })
 						.map((story, idx) =>
 							story.comingSoon ? (
 								<div className="story-card coming-soon" key={`coming-soon-${idx}`}>

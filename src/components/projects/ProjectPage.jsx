@@ -31,9 +31,16 @@ function ProjectsPage() {
 			<Navbar />
 			<h2 className="projects-title">{t("myProjects")}</h2>
 			<div className="projects-grid">
-				{projects.map((project, idx) => (
-					<ProjectCard key={idx} {...project} />
-				))}
+				{projects
+					.sort((a, b) => {
+						const pa = a.priority ?? 0;
+						const pb = b.priority ?? 0;
+						if (pb !== pa) return pb - pa;
+						return a.id - b.id;
+					})
+					.map((project, idx) => (
+						<ProjectCard key={idx} {...project} />
+					))}
 			</div>
 		</section>
 	);
